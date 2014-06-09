@@ -1,0 +1,22 @@
+<html>
+<head><title>Ordering notice</title></head>
+
+<body>
+
+<h1>Order List</h1>
+<div>
+
+
+{% for item in item_list %}
+    <br>
+    <table >
+    <tr><td>{{ item.menu.name }}</td></tr>
+    <tr><td>{{ item.waiting_num }}</td></tr>
+    <tr><td>{{ item.random_string }}</td></tr>
+    <tr><td>{{ item.order_date }}</td></tr>
+    </table>
+    </br>
+{% endfor %}
+</div>
+</body>
+</html>

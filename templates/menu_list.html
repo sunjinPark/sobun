@@ -1,0 +1,29 @@
+<html>
+<head><title>Ordering notice</title></head>
+
+<body>
+
+<h1>Menu List</h1>
+<div>
+<table >
+<tr>
+    <td> name </td>
+    <td> price(won) </td>
+    <td> menu_type </td>
+</tr>
+{% for item in item_list %}
+    <tr><td>{{ item.name }}</td>
+    <td>{{ item.price }}</td>
+    <td>{{ item.menu_type }}</td></tr>
+{% endfor %}
+</table>
+</div>
+    <table>
+        <tr>
+            <td><input type="button" name="insert_menu" value="insert menu" onclick="location.href='./insert'"/></td>
+            <td><input type="button" name="delete_menu" value="delete menu" onclick="location.href='./delete'"/></td>
+            <td><input type="button" name="modify_menu" value="modify menu" onclick="location.href='./modify'"/></td>
+        </tr>
+    </table>
+</body>
+</html>

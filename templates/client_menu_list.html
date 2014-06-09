@@ -1,0 +1,51 @@
+<html>
+<head>
+    <script>
+        function payment(name, type, price) {
+            alert("external payment system");
+            confirm(price + " won is paid. continue?");
+            alert("payment system complete. thank you.");
+
+            var formdata = new FormData();
+            formdata.append("name", name);
+            formdata.append("type", type);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://localhost:8000/orderlists', false);
+            xhr.send(formdata);
+        }
+
+        function add_cart() {
+            alert("adding item to cart")
+        }
+    </script>
+</head>
+
+<body>
+
+<h1>Menu List</h1>
+<div>
+<table border="solid">
+<tr>
+    <td> name </td>
+    <td> price(won) </td>
+    <td> menu_type </td>
+</tr>
+{% for item in item_list %}
+    <tr><td id="name" >{{ item.name }}</td>
+    <td>{{ item.price }}</td>
+    <td id="type">{{ item.menu_type }}</td>
+    <td><input type="button" name="insert_menu" value="put cart" onclick="add_cart()"/></td>
+    <td><input type="button" name="insert_menu" value="buy now" onclick="payment('{{ item.name }}', '{{ item.menu_type }}', '{{ item.price }}')"/></td>
+    </tr>
+{% endfor %}
+</table>
+</div>
+    <table>
+        <tr>
+            <td><input type="button" name="insert_menu" value="cart" onclick="location.href='./carts'"/></td>
+            <td><input type="button" name="insert_menu" value="order_list" onclick="location.href='./orderlists'"/></td>
+        </tr>
+    </table>
+</body>
+</html>

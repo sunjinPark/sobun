@@ -1,0 +1,40 @@
+<html>
+<head>
+    <title>Ordering notice</title>
+    <script>
+        function alarm_to_client(num) {
+            alert("alarm function. but we don't implement yet.");
+             var formdata = new FormData();
+            alert(num)
+            formdata.append("num", num);
+
+            var xhr = new XMLHttpRequest();
+            xhr.open('post', 'http://localhost:8000/finishalarm', false);
+            xhr.send(formdata);
+        }
+    </script>
+</head>
+
+<body>
+
+<h1>cooking List</h1>
+<div>
+
+
+{% for item in item_list %}
+    <br>
+    <table >
+    <tr><td>{{ item.menu.name }}</td></tr>
+    <tr><td>{{ item.waiting_num }}</td></tr>
+    <tr><td>{{ item.random_string }}</td></tr>
+    <tr><td>{{ item.order_date }}</td></tr>
+    <tr>
+        <td><input type="button" name="done" value="cook done" onclick="alarm_to_client('{{ item.waiting_num }}')"/></td>
+        <td><input type="button" name="taken" value="take food" onclick="location.href='./takefood'"/></td>
+    </tr>
+    </table>
+    </br>
+{% endfor %}
+</div>
+</body>
+</html>
